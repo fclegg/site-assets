@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cases</title>
+  <style>
+    body{font-family:Arial, sans-serif; margin:40px; max-width:900px;}
+    nav a{margin-right:14px;}
+  </style>
+</head>
+<body>
+  <h1>Cases (Admin)</h1>
+  <nav>
+    <a href="./home.html">Home</a>
+    <a href="./materials.html">Materials</a>
+    <a href="./settings.html">Settings</a>
+  </nav>
+
+  <p>Put restricted case notes here.</p>
+
+<script>
+  if (localStorage.getItem("admin_ok") !== "1") {
+    window.location.href = "./index.html";
+  }
+</script>
+</body>
+</html>
