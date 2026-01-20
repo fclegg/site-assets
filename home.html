@@ -1,35 +1,111 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Admin Home</title>
+  <title>Admin Dashboard</title>
+
   <style>
-    body{font-family:Arial, sans-serif; margin:40px; max-width:800px;}
-    nav a{margin-right:14px;}
-    .btn{padding:10px 14px; border:1px solid #ddd; border-radius:10px; cursor:pointer;}
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    nav {
+      text-align: center;
+      margin: 25px 0;
+    }
+
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #222;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background: #222;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .btn:hover {
+      background: #000;
+    }
+
+    .warning {
+      margin-top: 20px;
+      padding: 12px;
+      border-left: 5px solid #b00020;
+      background: #ffecec;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
-  <h1>Admin Home</h1>
+
+<div class="container">
+  <h1>Admin Dashboard</h1>
+
   <nav>
     <a href="./cases.html">Cases</a>
     <a href="./materials.html">Materials</a>
     <a href="./settings.html">Settings</a>
   </nav>
 
-  <p>Admin-only content lives here.</p>
+  <p>
+    This area contains administrative materials intended for internal use only.
+    Access by investigators is discouraged.
+  </p>
+
+  <div class="warning">
+    <strong>Notice:</strong> This section is restricted. Unauthorized access is not permitted.
+  </div>
 
   <button class="btn" onclick="logout()">Log out</button>
+</div>
 
 <script>
   if (localStorage.getItem("admin_ok") !== "1") {
     window.location.href = "./index.html";
   }
-  function logout(){
+
+  function logout() {
     localStorage.removeItem("admin_ok");
     window.location.href = "./index.html";
   }
 </script>
+
 </body>
 </html>
