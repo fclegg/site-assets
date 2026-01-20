@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Portal</title>
+  <style>
+    body{font-family:Arial, sans-serif; margin:40px; max-width:520px;}
+    .box{border:1px solid #ddd; padding:20px; border-radius:10px;}
+    input,button{padding:10px; width:100%; margin-top:10px;}
+    .err{color:#b00020; margin-top:10px;}
+  </style>
+</head>
+<body>
+  <h1>Admin Portal</h1>
+  <div class="box">
+    <p>Enter access code:</p>
+    <input id="pw" type="password" placeholder="Access code" />
+    <button onclick="login()">Enter</button>
+    <div id="msg" class="err"></div>
+  </div>
+
+<script>
+  // CHANGE THIS
+  const ACCESS_CODE = "NH2021";
+
+  function login() {
+    const entered = document.getElementById("pw").value || "";
+    if (entered === ACCESS_CODE) {
+      localStorage.setItem("admin_ok", "1");
+      window.location.href = "./home.html";
+    } else {
+      document.getElementById("msg").textContent = "Incorrect code.";
+    }
+  }
+
+  // If already “logged in”, skip gate
+  if (localStorage.getItem("admin_ok") === "1") {
+    window.location.href = "./home.html";
+  }
+</script>
+</body>
+</html>
