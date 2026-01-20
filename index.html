@@ -1,28 +1,85 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Admin Portal</title>
+  <title>Restricted Access</title>
+
   <style>
-    body{font-family:Arial, sans-serif; margin:40px; max-width:520px;}
-    .box{border:1px solid #ddd; padding:20px; border-radius:10px;}
-    input,button{padding:10px; width:100%; margin-top:10px;}
-    .err{color:#b00020; margin-top:10px;}
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: #222;
+      color: #fff;
+    }
+
+    button:hover {
+      background: #000;
+    }
+
+    .err {
+      margin-top: 12px;
+      color: #b00020;
+    }
   </style>
 </head>
 <body>
-  <h1>Admin Portal</h1>
-  <div class="box">
-    <p>Enter access code:</p>
-    <input id="pw" type="password" placeholder="Access code" />
-    <button onclick="login()">Enter</button>
-    <div id="msg" class="err"></div>
-  </div>
+
+<div class="container">
+  <h1>Restricted Access</h1>
+  <p>Enter access code to continue.</p>
+
+  <input id="pw" type="password" placeholder="Access code" />
+  <button onclick="login()">Enter</button>
+
+  <div id="msg" class="err"></div>
+</div>
 
 <script>
   // CHANGE THIS
   const ACCESS_CODE = "NH2021";
+
+  if (localStorage.getItem("admin_ok") === "1") {
+    window.location.href = "./home.html";
+  }
 
   function login() {
     const entered = document.getElementById("pw").value || "";
@@ -30,14 +87,10 @@
       localStorage.setItem("admin_ok", "1");
       window.location.href = "./home.html";
     } else {
-      document.getElementById("msg").textContent = "Incorrect code.";
+      document.getElementById("msg").textContent = "Incorrect access code.";
     }
   }
-
-  // If already “logged in”, skip gate
-  if (localStorage.getItem("admin_ok") === "1") {
-    window.location.href = "./home.html";
-  }
 </script>
+
 </body>
 </html>
